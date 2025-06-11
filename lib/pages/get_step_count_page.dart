@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
+import 'package:go_router/go_router.dart';
 
 class GetStepCountPage extends StatefulWidget {
   const GetStepCountPage({super.key});
@@ -101,6 +102,12 @@ class _GetStepCountPageState extends State<GetStepCountPage> {
                   ElevatedButton(
                     onPressed: _fetchSteps,
                     child: const Text('歩数を再計測'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      GoRouter.of(context).go('/ranking');
+                    },
+                    child: const Text('ランキングを確認する'),
                   ),
                 ],
               ),
