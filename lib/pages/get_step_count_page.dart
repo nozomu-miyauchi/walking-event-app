@@ -34,6 +34,11 @@ class _GetStepCountPageState extends State<GetStepCountPage> {
     setState(() {
       _isAuthorized = hasPermissions ?? false;
     });
+
+    // 歩数の初期表示時に最新の歩数を取得して表示する
+    if (_isAuthorized) {
+      _fetchSteps();
+    }
   }
 
   // ヘルスケア情報に対する許可を求める関数
@@ -53,6 +58,11 @@ class _GetStepCountPageState extends State<GetStepCountPage> {
       // TODO: logging frameworkでログとして出力する
       print("Exeption in requestPermissions: $error");
     }
+
+    // 歩数の初期表示時に最新の歩数を取得して表示する
+    if (_isAuthorized) {
+      _fetchSteps();
+    }
   }
 
   // 歩数を取得する
@@ -63,6 +73,10 @@ class _GetStepCountPageState extends State<GetStepCountPage> {
     try {
       // 取得日の00:00:00から現在時刻までの歩数を取得
       int? steps = await health.getTotalStepsInInterval(midnight, now);
+
+      // TODO: 後で削除する(歩数取得処理が呼び出されたかを確認するために入れたprint文)
+      print("fetch steps!");
+
       setState(() {
         _steps = steps;
       });
