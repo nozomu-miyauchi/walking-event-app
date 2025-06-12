@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import './pages/get_step_count_page.dart';
-import './pages/show_ranking_page.dart';
+import 'pages/get_step_count_page/get_step_count_page.dart';
+import 'pages/show_ranking_page/show_ranking_page.dart';
 
 void main() {
   runApp(MaterialApp.router(routerConfig: _router));

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import '../entities/steps.dart';
+
+import '../../entities/steps.dart';
+
+import './top_10_walker_list.dart';
 
 class ShowRankingPage extends StatelessWidget {
   const ShowRankingPage({super.key});
@@ -20,21 +23,21 @@ class ShowRankingPage extends StatelessWidget {
       Steps(employeeId: '010', name: 'name010', steps: 1000, rank: 10),
     ];
 
-    // 歩数トップ10を表示するウィジェット
-    Widget top10WalkerList() {
-      return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          final walker = top10walkerList[index];
+    // // 歩数トップ10を表示するウィジェット
+    // Widget top10WalkerList() {
+    //   return ListView.builder(
+    //     itemCount: 10,
+    //     itemBuilder: (context, index) {
+    //       final walker = top10walkerList[index];
 
-          return ListTile(
-            leading: Text((index + 1).toString()),
-            title: Text(walker.name),
-            subtitle: Text(walker.steps.toString()),
-          );
-        },
-      );
-    }
+    //       return ListTile(
+    //         leading: Text((index + 1).toString()),
+    //         title: Text(walker.name),
+    //         subtitle: Text(walker.steps.toString()),
+    //       );
+    //     },
+    //   );
+    // }
 
     return Scaffold(
       appBar: AppBar(title: const Text('Ranking')),
@@ -44,7 +47,10 @@ class ShowRankingPage extends StatelessWidget {
         },
         child: const Text('戻る'),
       ),
-      body: Scrollbar(thumbVisibility: true, child: top10WalkerList()),
+      body: Scrollbar(
+        thumbVisibility: true,
+        child: Top10WalkerList(stepList: top10walkerList),
+      ),
     );
   }
 }
